@@ -28,6 +28,7 @@ The plan would be to have a docker hub docker image containing all the common fi
    * /proc/sys - Display stats about the hosting machine
    * /var/run/docker.sock - Log ouput (similar to logspout)
    * /var/run/docker.sock - Stats output (CPU, Network, Disk I/O, Memory)
+   * Docker introspection (ie example JMX for java within a container)
    * etc, etc (maybe other data on the hosting machine like /proc)
    
 #### Output filters
