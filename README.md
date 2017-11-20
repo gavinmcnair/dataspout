@@ -25,19 +25,23 @@ The plan would be to have a docker hub docker image containing all the common fi
 
 #### Input filters
 
-   * /proc/sys - Display stats about the hosting machine
-   * /var/run/docker.sock - Log ouput (similar to logspout)
-   * /var/run/docker.sock - Stats output (CPU, Network, Disk I/O, Memory)
-   * Docker introspection (ie example JMX for java within a container)
-   * etc, etc (maybe other data on the hosting machine like /proc)
+|Filter name | Source | Usage |
+|----|--------|-------|
+|DockerHostMonitoring|/proc, /sys and /var|Parent host monitoring|
+|DockerContainerLogs|Docker socket|Log ouput (similar to logspout)|
+|DockerContainerStats|Docker socket|Stats output (CPU, Network, Disk I/O, Memory)
+| Example |Docker socket|Container introspection<br><li>JMX for Java within a container<br><li>NodeJS stats<br><li>etc
+
    
 #### Output filters
 
-The filters in initial scope are
+| Filter Name | Usage |
+|--------|-------|
+|Kafka|Ideally the output should be normalised to allow for the avro format (if possible)|
+|Stdout|The king of debuging destinations|
 
-   * Kafka - The outputs should ideally be avro schema'd
-   * Stdout - The king of debuging destinations
-   
+Other filters could be created as required.
+
 #### Inspiration
 
    It is clear when you have a lot of data that Kafka is an excellent way to transport it. It is also clear that using containerisation is a trend that will not stop. By mixing these use cases we can form a generic transport mechanism to automatically instrument hosts (both the container and underlying).
